@@ -11,4 +11,8 @@ import com.miguejimfer.notesapp.feature_note.domain.model.NoteBO
 abstract class NoteDB: RoomDatabase() {
 
     abstract val noteDao: NoteDAO
+
+    companion object {
+        const val DB_NAME = "notesDB"
+    }
 }

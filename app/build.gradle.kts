@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android") version "2.44" apply false
+    kotlin("kapt")
 }
 
 android {
@@ -66,6 +68,7 @@ dependencies {
 
     val roomVersion = "2.5.0"
     val coroutinesVersion = "1.3.2"
+    val daggerHiltVersion = "2.44"
 
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
@@ -74,4 +77,12 @@ dependencies {
     implementation("androidx.room:room-ktx:$roomVersion")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+
+    implementation("com.google.dagger:hilt-android:$daggerHiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$daggerHiltVersion")
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
