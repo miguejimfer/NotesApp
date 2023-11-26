@@ -5,6 +5,7 @@ import com.miguejimfer.notesapp.NotesApplication
 import com.miguejimfer.notesapp.feature_note.data.data_source.NoteDB
 import com.miguejimfer.notesapp.feature_note.data.repository.NoteRepository
 import com.miguejimfer.notesapp.feature_note.data.repository.NoteRepositoryImpl
+import com.miguejimfer.notesapp.feature_note.domain.use_case.AddNoteUseCase
 import com.miguejimfer.notesapp.feature_note.domain.use_case.DeleteNoteUseCase
 import com.miguejimfer.notesapp.feature_note.domain.use_case.GetNotesUseCase
 import com.miguejimfer.notesapp.feature_note.domain.use_case.NoteUseCases
@@ -40,7 +41,8 @@ object AppModule {
     fun provideNotesUseCases(noteRepository: NoteRepository): NoteUseCases {
         return NoteUseCases(
             getNotesUseCase = GetNotesUseCase(repository = noteRepository),
-            deleteNoteUseCase = DeleteNoteUseCase(repository = noteRepository)
+            deleteNoteUseCase = DeleteNoteUseCase(repository = noteRepository),
+            addNoteUseCase = AddNoteUseCase(repository = noteRepository),
         )
     }
 }
